@@ -1,0 +1,44 @@
+﻿<Window x:Class="IncPlan.TaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IncPlan"
+        mc:Ignorable="d"
+        Title="TaskWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="393*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Visibility="Visible" Grid.RowSpan="2">
+            <TextBox Name="toolNameField" Height="25" Canvas.Left="7" TextWrapping="Wrap" Canvas.Top="50" Width="140" PreviewTextInput="ToolHolderFieldInput"/>
+            <TextBlock Canvas.Left="10" TextAlignment="Center" TextWrapping="Wrap" Text="Инструмент" Canvas.Top="20" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <!--<TextBlock Canvas.Left="152" TextAlignment="Center" TextWrapping="Wrap" Text="Наименование изделия" Canvas.Top="20" Width="226" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox Name="nameProductField" Canvas.Left="152" Canvas.Top="50" Width="226" Height="25"/>
+            <Button Name="addTaskBtn" Content="Добавить задание" Canvas.Left="612" Canvas.Top="245" Width="150" Height="45" Click="AddNewToolEvent" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="10" TextAlignment="Center" TextWrapping="Wrap" Text="Типы обработки" Canvas.Top="130" FontSize="14" FontWeight="Bold" Width="150" Height="25"/>
+            <ListBox Name="machTypeListBox" Height="105" Canvas.Left="7" Canvas.Top="195" Width="150"/>
+            <ComboBox Name="machTypeComboBox" Canvas.Left="10" Canvas.Top="160" Width="150" Height="25"/>
+            <Button Content="Добавить тип" Canvas.Left="223" Canvas.Top="115" Width="150" Height="25" Click="AddMachTypeEvent" FontWeight="Bold"/>
+            <Button Content="Очистить список" Canvas.Left="223" Canvas.Top="160" Width="150" Height="25" Click="ClearMachTypeList" FontWeight="Bold"/>
+            <Rectangle Height="290" Canvas.Left="-3" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="775" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <TextBox x:Name="toolHolderField_Copy" Height="25" Canvas.Left="383" TextWrapping="Wrap" Canvas.Top="50" Width="150" PreviewTextInput="ToolHolderFieldInput"/>
+            <TextBlock Canvas.Left="378" TextAlignment="Center" TextWrapping="Wrap" Text="Кол_во план, шт" Canvas.Top="20" Width="150" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="538" TextAlignment="Center" TextWrapping="Wrap" Text="Заказчик" Canvas.Top="20" Width="80" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="toolInsTypeField_Copy" Canvas.Left="538" Canvas.Top="50" Width="80" Height="25"/>
+            <Button Content="Добавить изделие" Canvas.Left="228" Canvas.Top="80" Width="150" Height="25" Click="AddMachTypeEvent" FontWeight="Bold"/>
+            <Button Content="Добавить заказчика" Canvas.Left="538" Canvas.Top="80" Width="131" Height="25" Click="AddMachTypeEvent" FontWeight="Bold"/>
+            <Button Content="Добавить инструмент" Canvas.Left="7" Canvas.Top="80" Width="140" Height="25" Click="AddNewToolEvent" FontWeight="Bold"/>
+            <TextBox x:Name="toolNameField_Copy" Height="25" Canvas.Left="7" TextWrapping="Wrap" Canvas.Top="50" Width="140" PreviewTextInput="ToolHolderFieldInput"/>-->
+            <TextBlock Canvas.Left="10" TextAlignment="Center" TextWrapping="Wrap" Text="Инструмент" Canvas.Top="20" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <Rectangle Height="290" Canvas.Left="-3" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="775" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <Button Content="Добавить инструмент" Canvas.Left="7" Canvas.Top="80" Width="140" Height="25" Click="AddNewToolEvent" FontWeight="Bold"/>
+            <TextBox x:Name="toolCodField" Height="25" Canvas.Left="188" TextWrapping="Wrap" Canvas.Top="225" Width="140" PreviewTextInput="ToolHolderFieldInput"/>
+            <TextBlock Canvas.Left="191" TextAlignment="Center" TextWrapping="Wrap" Text="Инструмент" Canvas.Top="195" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <Button Content="Добавить код инструмента" Canvas.Left="188" Canvas.Top="255" Width="140" Height="25" Click="AddNewToolEvent" FontWeight="Bold"/>
+            <ComboBox x:Name="toolOpField" Canvas.Left="378" Canvas.Top="225" Width="80" Height="25"/>
+            <TextBlock Canvas.Left="378" TextAlignment="Center" TextWrapping="Wrap" Text="операция" Canvas.Top="200" Width="80" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+        </Canvas>
+    </Grid>
+</Window>
