@@ -34,8 +34,8 @@ namespace IncPlan
             operation4.ItemsSource = sqlDB.SelectOperation();
             operation5.ItemsSource = sqlDB.SelectOperation();
             report.ItemsSource = sqlDB.SelectReport();
-            //material.ItemsSource = sqlDB.SelectAllMaterials();
-            //tool.ItemsSource = sqlDB.SelectToolsList();
+            material.ItemsSource = sqlDB.SelectМaterials();
+            tool.ItemsSource = sqlDB.SelectTools();
 
             //qualityCase.ItemsSource = sqlDB.SelectInsertQuality();
         }

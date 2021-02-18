@@ -165,7 +165,6 @@ namespace IncPlan
         {
             return SelectItemIdAndName("ci_id", "ci_name", "ci");
         }
-
         public Dictionary<int, string> SelectCompliance()
         {
             return SelectItemIdAndName("compliance_id", "compliance_name", "compliance");
@@ -192,25 +191,20 @@ namespace IncPlan
             return SelectItemIdAndName("material_cod", "material_name", "materials");
         }
 
-
         public Dictionary<int, string> SelectOperation()
         {
             return SelectItemIdAndName("operation_id", "operation_name", "operation");
         }
-
 
         public Dictionary<int, string> SelectOrders()
         {
             return SelectItemIdAndName("orders_id", "orders_name", "orders");
         }
 
-
         public Dictionary<int, string> SelectProduct()
         {
             return SelectItemIdAndName("product_id_SAP", "product_name", "products");
         }
-
-
         public Dictionary<int, string> SelectSpecialty()
         {
             return SelectItemIdAndName("specialty_id", "specialty_name", "specialty");
@@ -225,29 +219,11 @@ namespace IncPlan
         {
             return SelectItemIdAndName("report_id", "report_name", "report");
         }
-        //public Dictionary<int, string> SelectReport()
-        //{
-        //    return SelectItemReport("report_id", "report_number", "report_name", "report");
-        //}
-        //private Dictionary<int, string> SelectItemReport(string idField, string numberField, string nameField, string tableName)
-        //{
-        //    var dict = new Dictionary<int, string>();
-        //    Command.CommandText = $"SELECT {idField}, {numberField + ' ' + nameField} FROM {tableName}";
-        //    Connection.Open();
-        //    var reader = Command.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        dict.Add(reader.GetInt32(0), reader.GetString(1));
-        //    }
-        //    reader.Close();
-        //    Connection.Close();
-        //    return dict;
-        //}
-        //public Dictionary<int, List<ToolResult>> SelectToolsList()
-        //{
-        //    return SelectAllItem(idField: "tool_id", "tool_cod", "tool_name", "tools");
-        //}
 
+        public Dictionary<int, string> SelectTools()
+        {
+            return SelectItemIdAndName("tool_cod", "tool_name", "tools");
+        }
 
         private Dictionary<int, string> SelectItemIdAndName(string idField, string nameField, string tableName)
         {
