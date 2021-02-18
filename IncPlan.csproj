@@ -77,14 +77,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomersListWindow.xaml.cs">
+      <DependentUpon>CustomersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersWindow.xaml.cs">
+      <DependentUpon>CustomersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EquipmentResult.cs" />
+    <Compile Include="EquipmentWindow.xaml.cs">
+      <DependentUpon>EquipmentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Material.cs" />
     <Compile Include="MaterialResult.cs" />
+    <Compile Include="MaterialWindow.xaml.cs">
+      <DependentUpon>MaterialWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Orders.cs" />
+    <Compile Include="OrdersListWindow.xaml.cs">
+      <DependentUpon>OrdersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersWindow.xaml.cs">
+      <DependentUpon>OrdersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plan.cs" />
+    <Compile Include="PlanListWindow.xaml.cs">
+      <DependentUpon>PlanListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlanResult.cs" />
+    <Compile Include="PlanWindow.xaml.cs">
+      <DependentUpon>PlanWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Product.cs" />
+    <Compile Include="ProductListWindow.xaml.cs">
+      <DependentUpon>ProductListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductResult.cs" />
+    <Compile Include="ProductWindow.xaml.cs">
+      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Report.cs" />
+    <Compile Include="ReportListWindow.xaml.cs">
+      <DependentUpon>ReportListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportResult.cs" />
+    <Compile Include="ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SQLiteDataBase.cs" />
+    <Compile Include="System\Windows\Forms.cs" />
     <Compile Include="Tool.cs" />
     <Compile Include="ToolMaterialListWindow.xaml.cs">
       <DependentUpon>ToolMaterialListWindow.xaml</DependentUpon>
@@ -93,6 +134,19 @@
     <Compile Include="ToolWindow.xaml.cs">
       <DependentUpon>ToolWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Сustomer.cs" />
+    <Page Include="CustomersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +159,42 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MaterialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrdersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrdersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="ProductListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ToolMaterialListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

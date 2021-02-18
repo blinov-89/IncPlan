@@ -13,6 +13,18 @@
             <DataGrid Name="AvToolGrid" Height="245" Canvas.Left="4" Canvas.Top="50" Width="478"/>
             <DataGrid Name="AvMaterialGrid" Height="245" Canvas.Left="487" Canvas.Top="48" Width="411"/>
             <Rectangle Height="300" Canvas.Left="4" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="5" Width="894" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <!--<ListBox Name="list" Height="145">-->
+                <!--<ListBoxItem Margin="3">AvMaterialGrid</ListBoxItem>
+                <ListBoxItem Margin="3">AvToolGrid</ListBoxItem>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Копировать"></MenuItem>
+                        <MenuItem Header="Вставить"></MenuItem>
+                        <MenuItem Header="Вырезать"></MenuItem>
+                        <MenuItem Header="Удалить"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>-->
         </Canvas>
     </Grid>
 </Window>

@@ -8,17 +8,17 @@ namespace IncPlan
 {
     public class EquipmentResult
     {
-        public string EquipmentMode { get; private set; }
         public int EquipmentId { get; private set; }
         public string EquipmentName { get; private set; }
+        public string EquipmentModel { get; private set; }
         public string DepartmentName { get; private set; }
         public string OperationName { get; private set; }
 
 
-        public EquipmentResult(string equipmentMode, int equipmentId, string equipmentName, string departmentName, string operationName)
+        public EquipmentResult(int equipmentId, string equipmentModel, string equipmentName, string departmentName, string operationName)
         {
-            EquipmentMode = equipmentMode;
             EquipmentId = equipmentId;
+            EquipmentModel = equipmentModel;
             EquipmentName = equipmentName;
             DepartmentName = departmentName;
             OperationName = operationName;

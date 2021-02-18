@@ -11,14 +11,14 @@ namespace IncPlan
         public string ReportNumber { get; private set; }
         public string ReportName { get; private set; }
         public string DepartmentName { get; private set; }
-        public int SpecialtyId { get; private set; }
+        public string SpecialtyName { get; private set; }
 
-        public ReportResult(string reportNumber, string reportName, string departmentName, int specialtyId)
+        public ReportResult(string reportNumber, string reportName, string departmentName, string specialtyName)
         {
             ReportNumber = reportNumber;
             ReportName = reportName;
             DepartmentName = departmentName;
-            SpecialtyId = specialtyId;
+            SpecialtyName = specialtyName;
         }
     }
 }

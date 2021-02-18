@@ -43,10 +43,18 @@ namespace IncPlan
         public void AddNewMaterial(Material material)
         {
             Connection.Open();
-            Command.CommandText = "Material INTO materials (material_name, ci_id) VALUES (@name, @mode, @ci)";
+            Command.CommandText = "INSERT INTO materials (material_name, material_cod, ci_id) VALUES (@name, @cod, @ci)";
             Command.Parameters.AddWithValue("@name", material.MaterialName);
             Command.Parameters.AddWithValue("@cod", material.MaterialCod);
             Command.Parameters.AddWithValue("@ci", material.CiId);
+            Command.ExecuteNonQuery();
+            Connection.Close();
+        }
+        public void AddNewCustomer(Сustomer customers)
+        {
+            Connection.Open();
+            Command.CommandText = "INSERT INTO customers (customer_name) VALUES (@name)";
+            Command.Parameters.AddWithValue("@name", customers.СustomerName);
             Command.ExecuteNonQuery();
             Connection.Close();
         }
@@ -54,7 +62,7 @@ namespace IncPlan
         public void AddNewOrder(Orders order)
         {
             Connection.Open();
-            Command.CommandText = "Order INTO orders (orders_name) VALUES (@name)";
+            Command.CommandText = "INSERT INTO orders (orders_name) VALUES (@name)";
             Command.Parameters.AddWithValue("@name", order.OrdersName);
             Command.ExecuteNonQuery();
             Connection.Close();
@@ -63,7 +71,7 @@ namespace IncPlan
         public void AddNewReport(Report report)
         {
             Connection.Open();
-            Command.CommandText = "Report INTO report (report_number, report_name, department_id, specialty_id) VALUES (@number, @name, @depart, @spec)";
+            Command.CommandText = "INSERT INTO report (report_number, report_name, department_id, specialty_id) VALUES (@number, @name, @depart, @spec)";
             Command.Parameters.AddWithValue("@number", report.ReportNumber);
             Command.Parameters.AddWithValue("@name", report.ReportName);
             Command.Parameters.AddWithValue("@depart", report.DepartmentId);
@@ -75,16 +83,29 @@ namespace IncPlan
         public void AddNewProduct(Product product)
         {
             Connection.Open();
-            Command.CommandText = "Product INTO product (product_name, product_time) VALUES (@name, @time)";
-            Command.Parameters.AddWithValue("@name", product.ProductlName);
+            Command.CommandText = "INSERT INTO products (product_name, product_id_SAP, product_time) VALUES (@name, @idSAP, @time)";
+            Command.Parameters.AddWithValue("@name", product.ProductName);
+            Command.Parameters.AddWithValue("@idSAP", product.ProductIdSAP);
             Command.Parameters.AddWithValue("@time", product.ProductTime);
             Command.ExecuteNonQuery();
             Connection.Close();
         }
-
-
-
-
+        public void AddNewPlan(Plan plan)
+        {
+            Connection.Open();
+            Command.CommandText = "INSERT INTO plan (plan_quantity, product_id_SAP, orders_id, customer_id, " +
+                "report_id, status_id, documents_id) VALUES (@quantity, @product, @orders, @customer, " +
+                "@report, @status, @documents)";
+            Command.Parameters.AddWithValue("@quantity", plan.PlanQuantity);
+            Command.Parameters.AddWithValue("@product", plan.ProductIdSAP);
+            Command.Parameters.AddWithValue("@orders", plan.OrdersId);
+            Command.Parameters.AddWithValue("@customer", plan.CustomerId);
+            Command.Parameters.AddWithValue("@report", plan.ReportId);
+            Command.Parameters.AddWithValue("@status", plan.StatusId);
+            Command.Parameters.AddWithValue("@documents", plan.DocumentsId);
+            Command.ExecuteNonQuery();
+            Connection.Close();
+        }
 
 
         //public void AddNewInsertMaterial(string name, List<CuttingCondition> conditions)
@@ -195,15 +216,37 @@ namespace IncPlan
             return SelectItemIdAndName("specialty_id", "specialty_name", "specialty");
         }
 
-
-
         public Dictionary<int, string> SelectStatus()
         {
             return SelectItemIdAndName("status_id", "status_name", "status");
         }
 
-
-
+        public Dictionary<int, string> SelectReport()
+        {
+            return SelectItemIdAndName("report_id", "report_name", "report");
+        }
+        //public Dictionary<int, string> SelectReport()
+        //{
+        //    return SelectItemReport("report_id", "report_number", "report_name", "report");
+        //}
+        //private Dictionary<int, string> SelectItemReport(string idField, string numberField, string nameField, string tableName)
+        //{
+        //    var dict = new Dictionary<int, string>();
+        //    Command.CommandText = $"SELECT {idField}, {numberField + ' ' + nameField} FROM {tableName}";
+        //    Connection.Open();
+        //    var reader = Command.ExecuteReader();
+        //    while (reader.Read())
+        //    {
+        //        dict.Add(reader.GetInt32(0), reader.GetString(1));
+        //    }
+        //    reader.Close();
+        //    Connection.Close();
+        //    return dict;
+        //}
+        //public Dictionary<int, List<ToolResult>> SelectToolsList()
+        //{
+        //    return SelectAllItem(idField: "tool_id", "tool_cod", "tool_name", "tools");
+        //}
 
 
         private Dictionary<int, string> SelectItemIdAndName(string idField, string nameField, string tableName)
@@ -220,37 +263,22 @@ namespace IncPlan
             Connection.Close();
             return dict;
         }
-
-        //public List<ToolComplexResult> SelectToolByMachType(int procMaterial, int machType, int quality)
-        //{
-        //    List<ToolComplexResult> result = new List<ToolComplexResult>();
-
-        //    Command.CommandText = "SELECT tools.tool_name, tools.tool_hold_size, inserts.insert_full_name, inserts_type.type_size, inserts_mach_quality.quality_code, " +
-        //                          "insert_materials.mat_name, proc_insert_mat.cut_speed, proc_insert_mat.cut_feed, proc_insert_mat.cut_depth " +
-        //                          "FROM proc_materials INNER JOIN(insert_materials INNER JOIN proc_insert_mat ON insert_materials.mat_id = proc_insert_mat.insert_mat_id) " +
-        //                          "ON proc_materials.proc_mat_id = proc_insert_mat.proc_mat_id, " +
-        //                          "(inserts_mach_quality INNER JOIN((inserts_type INNER JOIN inserts ON inserts_type.[type_id] = inserts.[insert_id]) " +
-        //                          "INNER JOIN tools ON inserts_type.[type_id] = tools.[tool_insert_type]) ON inserts_mach_quality.quality_id = inserts.insert_mach_quality) " +
-        //                          "INNER JOIN(mach_type INNER JOIN tool_mach_types ON mach_type.mach_id = tool_mach_types.mach_id) ON tools.tool_id = tool_mach_types.tool_id " +
-        //                          $"WHERE(((proc_materials.proc_mat_id) = {procMaterial}) AND((inserts_mach_quality.quality_id) = {quality}) AND((mach_type.mach_id) = {machType}))";
-        //    Connection.Open();
-        //    var rdr = Command.ExecuteReader();
-        //    while (rdr.Read())
-        //    {
-        //        result.Add(new ToolComplexResult(rdr.GetString(0), rdr.GetInt32(1), rdr.GetString(2),
-        //                                        rdr.GetString(3), rdr.GetString(4), rdr.GetString(5),
-        //                                        rdr.GetString(6), rdr.GetString(7), rdr.GetString(8)));
-        //    }
-        //    rdr.Close();
-        //    Connection.Close();
-        //    return result;
+            //}
+            //private Dictionary<string, List<ToolResult>> SelectAllItem()
+            //{
+            //    var dict = new Dictionary<string, List<ToolResult>>();
+            //    Command.CommandText = "SELECT tools.tool_name, tools.tool_cod, operation.operation_name " +
+            //                          "FROM tools INNER JOIN operation ON operation.operation_id = tools.operation_id";
+            //    Connection.Open();
+            //    var reader = Command.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        dict.Add(reader.GetString(0), reader.GetValues(SelectAllItem));
+            //    }
+            //    reader.Close();
+            //    Connection.Close();
+            //    return dict;
         //}
-
-
-
-
-
-
         public List<ToolResult> SelectAllTools()
         {
             var result = new List<ToolResult>();
@@ -268,9 +296,6 @@ namespace IncPlan
             Connection.Close();
             return result;
         }
-
-
-
         public List<MaterialResult> SelectAllMaterials()
         {
             var result = new List<MaterialResult>();
@@ -293,38 +318,150 @@ namespace IncPlan
         {
             var result = new List<EquipmentResult>();
 
-            Command.CommandText = "SELECT equipment.equipment_id, equipment.equipment_mode, equipment.equipment_name, department.department_name,  operation.operation_name " +
-                                  "FROM department INNER JOIN(equipment INNER JOIN operation ON equipment.operation_name = operation.operation_id)" +
-                                  " ON equipment.department_name = idepartment.department_id";
+            Command.CommandText = "SELECT equipment.equipment_id, equipment.equipment_model, equipment.equipment_name, department.department_name,  operation.operation_name " +
+                                  "FROM department INNER JOIN(equipment INNER JOIN operation ON equipment.operation_id = operation.operation_id)" +
+                                  " ON equipment.department_id = department.department_id";
 
             Connection.Open();
             var rdr = Command.ExecuteReader();
             while (rdr.Read())
             {
-                result.Add(new EquipmentResult(rdr.GetString(0), rdr.GetInt32(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
+                result.Add(new EquipmentResult(rdr.GetInt32(0), rdr.IsDBNull(1) ? null : rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
             }
             rdr.Close();
             Connection.Close();
             return result;
         }
-
+        //public Dictionary<int, List<ReportResult>> SelectReportList()
+        //{
+        //    var dict = new Dictionary<int, List<ReportResult>>();
+        //    return dict.Add("SelectRep", SelectReportList);
+        //}
         public List<ReportResult> SelectAllReport()
         {
             var result = new List<ReportResult>();
-
-            Command.CommandText = "SELECT report.report_number, report.report_name, department.department_name, specialty.specialty_id" +
-                                  "FROM report INNER JOIN(specialty INNER JOIN operation ON equipment.operation_name = operation.operation_id)" +
-                                  " ON equipment.department_name = idepartment.department_id";
-
+           
+            Command.CommandText = "SELECT report.report_number, report.report_name, department.department_name, specialty.specialty_name " +
+                                  "FROM department INNER JOIN(specialty INNER JOIN report ON specialty.specialty_id = report.specialty_id)" +
+                                  " ON department.department_id = report.department_id";
             Connection.Open();
             var rdr = Command.ExecuteReader();
             while (rdr.Read())
             {
-                result.Add(new ReportResult(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetInt32(3)));
+                result.Add(new ReportResult(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3)));
             }
             rdr.Close();
             Connection.Close();
             return result;
         }
+        //public List<ReportResult> SelectAllReportList()
+        //{
+        //    var dict = new Dictionary<int, List<ReportResult>>();
+
+        //    Command.CommandText = "SELECT report.report_number, report.report_name, department.department_name, specialty.specialty_name " +
+        //                          "FROM department INNER JOIN(specialty INNER JOIN report ON specialty.specialty_id = report.specialty_id)" +
+        //                          " ON department.department_id = report.department_id";
+        //    Connection.Open();
+        //    var rdr = Command.ExecuteReader();
+        //    while (rdr.Read())
+        //    {
+        //        dict.Add(new ReportResult(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3)));
+        //    }
+        //    rdr.Close();
+        //    Connection.Close();
+        //    return dict;
+        //}
+        public List<ProductResult> SelectAllProduct()
+        {
+            var result = new List<ProductResult>();
+
+            Command.CommandText = "SELECT products.product_name, products.product_id_SAP, products.product_time " +
+                                  "FROM products";
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                result.Add(new ProductResult(rdr.GetString(0), rdr.GetInt32(1), rdr.GetFloat(2)));
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+        public List<PlanResult> SelectAllPlan()
+        {
+            var result = new List<PlanResult>();
+
+            Command.CommandText = "SELECT plan.product_id_SAP, products.product_name, plan.plan_quantity, plan.plan_time, orders.orders_name, " +
+                                    "customers.customer_name, report.report_name, status.status_name, documents.documents_name " +
+                                    "FROM report INNER JOIN(status INNER JOIN(products INNER JOIN(orders " +
+                                    "INNER JOIN(documents INNER JOIN(customers INNER JOIN plan ON customers.customer_id = plan.customer_id) " +
+                                    "ON documents.documents_id = plan.documents_id) ON orders.orders_id = plan.orders_id) " +
+                                    "ON products.product_id_SAP = plan.product_id_SAP) ON status.status_id = plan.status_id) " +
+                                    "ON report.report_id = plan.report_id ";
+
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                result.Add(new PlanResult(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetString(3),
+                    rdr.GetString(4), rdr.GetString(5), rdr.GetString(6), rdr.GetString(7), rdr.GetString(8)));
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+        public List<Сustomer> SelectAllCustomers()
+        {
+            var result = new List<Сustomer>();
+
+            Command.CommandText = "SELECT customers.customer_name " +
+                                  "FROM customers";
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                result.Add(new Сustomer(rdr.GetString(0)));
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+        public List<Orders> SelectAllOrders()
+        {
+            var result = new List<Orders>();
+
+            Command.CommandText = "SELECT orders.orders_name " +
+                                  "FROM orders";
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                result.Add(new Orders(rdr.GetString(0)));
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+
+            //public Dictionary<int, string> SelectReport2()
+            //{
+            //    return SelectItemIdAndName("report_id", "report_name", "report_number", "report");
+            //}
+
+
+            //private Dictionary<int, string> SelectItemIdAndName(string idField, string nameField, string report_number, string tableName)
+            //{
+            //    var dict = new Dictionary<int, string>();
+            //    Command.CommandText = $"SELECT {idField}, {nameField,report_number} FROM {tableName}";
+            //    Connection.Open();
+            //    var reader = Command.ExecuteReader();
+            //    while (reader.Read())
+            //    {
+            //        dict.Add(reader.GetInt32(0), reader.GetString(1));
+            //    }
+            //    reader.Close();
+            //    Connection.Close();
+            //    return dict;
+        //}
     }
 }

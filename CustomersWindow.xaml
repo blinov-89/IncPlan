@@ -1,0 +1,21 @@
+﻿<Window x:Class="IncPlan.CustomersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IncPlan"
+        mc:Ignorable="d"
+        Title="CustomersWindow" Height="194.018" Width="351.016">
+    <Grid Margin="0,0,461,266">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="393*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="167" Margin="10,10,0,0" VerticalAlignment="Top" Width="328" Visibility="Visible" Grid.RowSpan="2">
+            <TextBox Name="customersNameField" Height="25" Canvas.Left="12" TextWrapping="Wrap" Canvas.Top="50" Width="295"/>
+            <TextBlock Canvas.Left="37" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="20" Width="235" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="Наименование заказчика"/>
+            <Rectangle Height="131" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="323" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <Button Content="Добавить заказчика" Canvas.Left="12" Canvas.Top="80" Width="295" Height="25" Click="AddNewCustomersEvent" FontWeight="Bold"/>
+        </Canvas>
+    </Grid>
+</Window>

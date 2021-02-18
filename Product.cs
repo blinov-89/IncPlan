@@ -8,13 +8,14 @@ namespace IncPlan
 {
     public class Product
     {
-        public string ProductlName { get; private set; }
-
+        public string ProductName { get; private set; }
+        public int ProductIdSAP { get; private set; }
         public float ProductTime { get; private set; }
 
-        public Product(string name, float time)
+        public Product(string name, int productIdSAP, float time)
         {
-            ProductlName = name;
+            ProductName = name;
+            ProductIdSAP = productIdSAP;
             ProductTime = time;
         }
     }

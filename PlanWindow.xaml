@@ -1,0 +1,33 @@
+﻿<Window x:Class="IncPlan.PlanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IncPlan"
+        mc:Ignorable="d"
+        Title="Окно добавления задания" Height="243.792" Width="800">
+    <Grid Margin="0,0,0,221">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="393*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="187" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Visibility="Visible" Grid.RowSpan="2">
+            <Rectangle Height="177" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="772" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <Button Content="Добавить заказ" Canvas.Left="233" Canvas.Top="152" Width="295" Height="25" Click="AddNewPlanEvent" FontWeight="Bold"/>
+            <TextBox x:Name="planQuantityField" Height="25" Canvas.Left="330" TextWrapping="Wrap" Canvas.Top="48" Width="121"/>
+            <TextBlock Canvas.Left="330" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="121" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="Кол-во изделий"/>
+            <ComboBox x:Name="ordersId" Canvas.Left="461" Canvas.Top="48" Width="161" Height="25"/>
+            <TextBlock Canvas.Left="461" TextAlignment="Center" TextWrapping="Wrap" Text="Основание для заказа" Canvas.Top="18" Width="161" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="customerId" Canvas.Left="642" Canvas.Top="48" Width="122" Height="25"/>
+            <TextBlock Canvas.Left="642" TextAlignment="Center" TextWrapping="Wrap" Text="Заказчик" Canvas.Top="18" Width="122" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="productName" Canvas.Left="10" Canvas.Top="48" Width="314" Height="25"/>
+            <TextBlock Canvas.Left="10" TextAlignment="Center" TextWrapping="Wrap" Text="Наименование изделия" Canvas.Top="18" Width="314" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="reportId" Canvas.Left="59" Canvas.Top="111" Width="162" Height="25"/>
+            <TextBlock Canvas.Left="59" TextAlignment="Center" TextWrapping="Wrap" Text="ФИО исполнителя" Canvas.Top="81" Width="185" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="statusId" Canvas.Left="301" Canvas.Top="111" Width="162" Height="25"/>
+            <TextBlock Canvas.Left="301" TextAlignment="Center" TextWrapping="Wrap" Text="Статус заказа" Canvas.Top="81" Width="162" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <ComboBox x:Name="documentId" Canvas.Left="519" Canvas.Top="111" Width="162" Height="25"/>
+            <TextBlock Canvas.Left="519" TextAlignment="Center" TextWrapping="Wrap" Text="Документы" Canvas.Top="81" Width="185" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+        </Canvas>
+    </Grid>
+</Window>

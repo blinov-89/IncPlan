@@ -10,11 +10,11 @@ namespace IncPlan
     {
         public string MaterialName { get; private set; }
 
-        public string MaterialCod { get; private set; }
+        public int MaterialCod { get; private set; }
 
         public int CiId { get; private set; }
 
-        public Material(string name, string cod, int ci)
+        public Material(string name, int cod, int ci)
         {
             MaterialName = name;
             MaterialCod = cod;
