@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="Список заказчиков" Height="450" Width="800">
-    <Grid Margin="0,0,46,9">
-        <Canvas Name="CustomersList" HorizontalAlignment="Left" Height="305" Margin="10,10,-34,0" VerticalAlignment="Top" Width="770">
-            <DataGrid Name="AvCustomersGrid" Height="285" Canvas.Left="4" Canvas.Top="10" Width="756"/>
-            <Rectangle Height="300" Canvas.Left="4" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="5" Width="769" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+        Title="Список заказчиков" Height="361" Width="175">
+    <Grid Margin="0,0,628,94">
+        <Canvas Name="CustomersList" HorizontalAlignment="Left" Height="305" Margin="10,10,0,0" VerticalAlignment="Top" Width="145">
+            <DataGrid Name="AvCustomersGrid" Height="285" Canvas.Left="4" Canvas.Top="10" Width="137"/>
+            <Rectangle Height="300" Canvas.Left="4" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="5" Width="137" Panel.ZIndex="-1" Fill="#FFECECEC"/>
         </Canvas>
     </Grid>
 </Window>

@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="ToolWindow" Height="227.54" Width="800">
-    <Grid>
+        Title="ToolWindow" Height="195.949" Width="711.731">
+    <Grid Margin="0,0,89,36">
         <Grid.RowDefinitions>
             <RowDefinition Height="26*"/>
             <RowDefinition Height="393*"/>
         </Grid.RowDefinitions>
-        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="187" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Visibility="Visible" Grid.RowSpan="2">
+        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="140" Margin="10,10,0,0" VerticalAlignment="Top" Width="678" Visibility="Visible" Grid.RowSpan="2">
             <TextBox Name="toolNameField" Height="25" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="48" Width="295"/>
             <TextBlock Canvas.Left="250" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="171" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="инструмент"/>
-            <Rectangle Height="131" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="772" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <Rectangle Height="131" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="680" Panel.ZIndex="-1" Fill="#FFECECEC"/>
             <Button Content="Добавить инструмент" Canvas.Left="190" Canvas.Top="78" Width="295" Height="25" Click="AddNewToolEvent" FontWeight="Bold"/>
             <TextBox x:Name="toolCodField" Height="25" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="48" Width="175"/>
             <TextBlock Canvas.Left="31" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="код инструмента"/>

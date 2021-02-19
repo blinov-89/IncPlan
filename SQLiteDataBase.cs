@@ -239,22 +239,7 @@ namespace IncPlan
             Connection.Close();
             return dict;
         }
-            //}
-            //private Dictionary<string, List<ToolResult>> SelectAllItem()
-            //{
-            //    var dict = new Dictionary<string, List<ToolResult>>();
-            //    Command.CommandText = "SELECT tools.tool_name, tools.tool_cod, operation.operation_name " +
-            //                          "FROM tools INNER JOIN operation ON operation.operation_id = tools.operation_id";
-            //    Connection.Open();
-            //    var reader = Command.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        dict.Add(reader.GetString(0), reader.GetValues(SelectAllItem));
-            //    }
-            //    reader.Close();
-            //    Connection.Close();
-            //    return dict;
-        //}
+
         public List<ToolResult> SelectAllTools()
         {
             var result = new List<ToolResult>();
@@ -308,11 +293,6 @@ namespace IncPlan
             Connection.Close();
             return result;
         }
-        //public Dictionary<int, List<ReportResult>> SelectReportList()
-        //{
-        //    var dict = new Dictionary<int, List<ReportResult>>();
-        //    return dict.Add("SelectRep", SelectReportList);
-        //}
         public List<ReportResult> SelectAllReport()
         {
             var result = new List<ReportResult>();
@@ -330,23 +310,67 @@ namespace IncPlan
             Connection.Close();
             return result;
         }
-        //public List<ReportResult> SelectAllReportList()
-        //{
-        //    var dict = new Dictionary<int, List<ReportResult>>();
+        public List<string> SelectAllReportList()
+        {
+            var result = new List<string>();
 
-        //    Command.CommandText = "SELECT report.report_number, report.report_name, department.department_name, specialty.specialty_name " +
-        //                          "FROM department INNER JOIN(specialty INNER JOIN report ON specialty.specialty_id = report.specialty_id)" +
-        //                          " ON department.department_id = report.department_id";
-        //    Connection.Open();
-        //    var rdr = Command.ExecuteReader();
-        //    while (rdr.Read())
-        //    {
-        //        dict.Add(new ReportResult(rdr.GetString(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3)));
-        //    }
-        //    rdr.Close();
-        //    Connection.Close();
-        //    return dict;
-        //}
+            Command.CommandText = "SELECT report.report_number, report.report_name, department.department_name, specialty.specialty_name " +
+                                  "FROM department INNER JOIN(specialty INNER JOIN report ON specialty.specialty_id = report.specialty_id)" +
+                                  " ON department.department_id = report.department_id";
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                StringBuilder a = new StringBuilder();
+                result.Add(a.AppendLine($"" +
+                    $"Таб. № {rdr.GetString(0)}, ФИО: {rdr.GetString(1)}, Специальность: {rdr.GetString(3)}").ToString());
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+        public List<string> SelectAllEquipmentList()
+        {
+            var result = new List<string>();
+
+            Command.CommandText = "SELECT equipment.equipment_id, equipment.equipment_model, equipment.equipment_name, department.department_name,  operation.operation_name " +
+                                  "FROM department INNER JOIN(equipment INNER JOIN operation ON equipment.operation_id = operation.operation_id)" +
+                                  " ON equipment.department_id = department.department_id";
+
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                StringBuilder a = new StringBuilder();
+                result.Add(a.AppendLine($"Код: {rdr.GetInt32(0)}, Модель: {(rdr.IsDBNull(1) ? null : rdr.GetString(1))}, Наименование: {rdr.GetString(2)}, {rdr.GetString(3)}").ToString());
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
+        public List<string> SelectAllPlanList()
+        {
+            var result = new List<string>();
+
+            Command.CommandText = "SELECT plan.product_id_SAP, products.product_name, plan.plan_quantity, plan.plan_time, orders.orders_name, " +
+                                    "customers.customer_name, report.report_name, status.status_name, documents.documents_name " +
+                                    "FROM report INNER JOIN(status INNER JOIN(products INNER JOIN(orders " +
+                                    "INNER JOIN(documents INNER JOIN(customers INNER JOIN plan ON customers.customer_id = plan.customer_id) " +
+                                    "ON documents.documents_id = plan.documents_id) ON orders.orders_id = plan.orders_id) " +
+                                    "ON products.product_id_SAP = plan.product_id_SAP) ON status.status_id = plan.status_id) " +
+                                    "ON report.report_id = plan.report_id ";
+
+            Connection.Open();
+            var rdr = Command.ExecuteReader();
+            while (rdr.Read())
+            {
+                StringBuilder a = new StringBuilder();
+                result.Add(a.AppendLine($"Код: {rdr.GetInt32(0)}, Наименование: {rdr.GetString(1)}, Кол-во: {rdr.GetInt32(2)} шт., Время изг.: {rdr.GetString(3)} н/ч, Заказ: {rdr.GetString(4)}, Заказчик: {rdr.GetString(5)}").ToString());
+            }
+            rdr.Close();
+            Connection.Close();
+            return result;
+        }
         public List<ProductResult> SelectAllProduct()
         {
             var result = new List<ProductResult>();
@@ -418,26 +442,5 @@ namespace IncPlan
             Connection.Close();
             return result;
         }
-
-            //public Dictionary<int, string> SelectReport2()
-            //{
-            //    return SelectItemIdAndName("report_id", "report_name", "report_number", "report");
-            //}
-
-
-            //private Dictionary<int, string> SelectItemIdAndName(string idField, string nameField, string report_number, string tableName)
-            //{
-            //    var dict = new Dictionary<int, string>();
-            //    Command.CommandText = $"SELECT {idField}, {nameField,report_number} FROM {tableName}";
-            //    Connection.Open();
-            //    var reader = Command.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        dict.Add(reader.GetInt32(0), reader.GetString(1));
-            //    }
-            //    reader.Close();
-            //    Connection.Close();
-            //    return dict;
-        //}
     }
 }

@@ -24,20 +24,23 @@ namespace IncPlan
     public partial class MainWindow : Window
     {
         public static SQLiteDataBase sqlDB = new SQLiteDataBase(@"URI=file:" + System.IO.Path.Combine(Environment.CurrentDirectory, "Databaseplan.db"));
+        //private List<ReportResult> list;
+
         public MainWindow()
         {
             InitializeComponent();
-            product.ItemsSource = sqlDB.SelectProduct();
+            //list = sqlDB.SelectAllReport();
+            plan.ItemsSource = sqlDB.SelectAllPlanList();
             operation.ItemsSource = sqlDB.SelectOperation();
-            operation2.ItemsSource = sqlDB.SelectOperation();
-            operation3.ItemsSource = sqlDB.SelectOperation();
-            operation4.ItemsSource = sqlDB.SelectOperation();
-            operation5.ItemsSource = sqlDB.SelectOperation();
-            report.ItemsSource = sqlDB.SelectReport();
+            //report.ItemsSource = list.Select(x=> x.ReportName);
+            report.ItemsSource = sqlDB.SelectAllReportList();
+            //report.ItemsSource = list;
             material.ItemsSource = sqlDB.SelectМaterials();
             tool.ItemsSource = sqlDB.SelectTools();
+            tool2.ItemsSource = sqlDB.SelectTools();
+            tool3.ItemsSource = sqlDB.SelectTools();
+            equipment.ItemsSource = sqlDB.SelectAllEquipmentList();
 
-            //qualityCase.ItemsSource = sqlDB.SelectInsertQuality();
         }
         // доработать кнопку сохранить sw.WriteLine(      );
         private void Save_Click(object sender, EventArgs args)
@@ -162,5 +165,10 @@ namespace IncPlan
             rListW.Owner = this;
             rListW.Show();
         }
+
+        //private void OnReportSelected(object sender, SelectionChangedEventArgs e)
+        //{
+        //    specialtyName.Text = (list.Where(x => x.ReportName == (sender as ComboBox).SelectedItem.ToString()).First().SpecialtyName).ToString();
+        //}
     }
 }

@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="Главное окно" Height="450" Width="851.689">
-    <Grid x:Name="baseGrid">
-        <Menu Height="30" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+        Title="Главное окно" Height="450" Width="923.189">
+    <Grid x:Name="baseGrid" Margin="0,10,2,-2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Height="30" Margin="10,5,16,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
             <MenuItem Header="Файл" Height="30" FlowDirection="RightToLeft" HorizontalAlignment="Left">
-                <MenuItem Header="Сохранить" Click="Save_Click" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>
-                <!--<MenuItem Header="Сохранить как" Click="Save_as_Click" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>-->
+                <!--<MenuItem Header="Сохранить" Click="Save_Click" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>-->
                 <MenuItem Header="Печать" Click="Print_Click" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>
                 <MenuItem Header="Выход" Click="Exit_Click" FlowDirection="RightToLeft" HorizontalAlignment="Right"/>
             </MenuItem>
@@ -18,7 +23,7 @@
             <MenuItem Header="Добавить позицию в справочник" FlowDirection="LeftToRight">
                 <MenuItem Header="Добавить инструмент" Click="AddNewToolMenuClick"/>
                 <MenuItem Header="Добавить материал" Click="AddNewMaterialMenuClick"/>
-                <MenuItem Header="Добавить данные заказчика" Click="AddNewCustomersMenuClick"/>
+                <MenuItem Header="Добавить данные о заказчике" Click="AddNewCustomersMenuClick"/>
                 <MenuItem Header="Добавить основание для заказа" Click="AddNewOrdersMenuClick"/>
                 <MenuItem Header="Добавить изделие" Click="AddNewProductMenuClick"/>
                 <MenuItem Header="Добавить нового сотрудника" Click="AddNewReportMenuClick"/>
@@ -30,46 +35,31 @@
                 <MenuItem Header="План" Click="ShowPlanList"/>
                 <MenuItem Header="Список изделий" Click="ShowProductsList"/>
                 <MenuItem Header="Список оборудования" Click="ShowEquipmentList"/>
-                <MenuItem Header="Табель" Click="ShowReportList"/>
+                <MenuItem Header="Список персонала" Click="ShowReportList"/>
             </MenuItem>
         </Menu>
-        <Canvas x:Name="selectToolCanvas" HorizontalAlignment="Left" Height="369" Margin="10,40,0,0" VerticalAlignment="Top" Width="834" Visibility="Visible">
-            <TextBlock Canvas.Left="162" TextAlignment="Center" TextWrapping="Wrap" Text="Заготовка" Canvas.Top="49" FontSize="14" FontWeight="Bold" Width="213" Height="25"/>
-            <TextBlock Canvas.Left="571" TextAlignment="Center" TextWrapping="Wrap" Text="Размер" Canvas.Top="49" FontSize="14" FontWeight="Bold" Width="120" Height="25" RenderTransformOrigin="0.438,0.575"/>
-            <TextBlock Canvas.Left="696" TextAlignment="Center" TextWrapping="Wrap" Text="Вес" Canvas.Top="49" FontSize="14" FontWeight="Bold" Width="125" Height="25"/>
-            <ComboBox x:Name="material" Canvas.Left="14" Canvas.Top="74" Width="512" Height="25"/>
-            <Rectangle Height="360" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Width="834" Panel.ZIndex="-1" Fill="#FFECECEC"/>
-            <TextBlock Canvas.Left="25" TextWrapping="Wrap" Text="Операция" Canvas.Top="164" FontSize="14" FontWeight="Bold"/>
-            <TextBlock TextWrapping="Wrap" Text="Наименование изделия (чертеж, эскиз)" FontSize="14" FontWeight="Bold" Canvas.Left="14"/>
-            <ComboBox x:Name="product" Canvas.Top="19" Width="810" Height="25" Canvas.Left="14"/>
-            <DataGrid x:Name="selectToolResultGrid_Copy1" Height="25" Canvas.Left="696" Canvas.Top="74" Width="125"/>
-            <TextBlock TextWrapping="Wrap" Text="Кол-во" FontSize="14" FontWeight="Bold" Canvas.Left="287"/>
-            <TextBlock TextWrapping="Wrap" Text="С/з" FontSize="14" FontWeight="Bold" Canvas.Left="417"/>
-            <ComboBox x:Name="operation" Canvas.Left="19" Canvas.Top="188" Width="116" Height="26"/>
-            <TextBlock Canvas.Left="153" TextWrapping="Wrap" Text="Нормочасы" Canvas.Top="164" FontSize="14" FontWeight="Bold"/>
-            <TextBlock Canvas.Left="284" TextWrapping="Wrap" Text="Исполнитель" Canvas.Top="164" FontSize="14" FontWeight="Bold"/>
-            <ComboBox x:Name="report" Canvas.Left="272" Canvas.Top="188" Width="114" Height="26"/>
-            <TextBlock TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Canvas.Left="547" Width="125"><Run Text="СП"/><Run Text=" "/><Run Text="("/><Run Text="заказчик"/><Run Text=")"/></TextBlock>
-            <DataGrid x:Name="selectToolResultGrid_Copy3" Height="26" Canvas.Left="142" Canvas.Top="188" Width="125"/>
-            <ComboBox x:Name="operation2" Canvas.Left="19" Canvas.Top="218" Width="116" Height="26"/>
-            <ComboBox x:Name="procMaterialCase_Copy5" Canvas.Left="270" Canvas.Top="218" Width="116" Height="26"/>
-            <DataGrid x:Name="selectToolResultGrid_Copy6" Height="26" Canvas.Left="140" Canvas.Top="218" Width="125"/>
-            <ComboBox x:Name="operation3" Canvas.Left="19" Canvas.Top="248" Width="116" Height="26"/>
-            <ComboBox x:Name="procMaterialCase_Copy7" Canvas.Left="270" Canvas.Top="248" Width="116" Height="26"/>
-            <DataGrid x:Name="selectToolResultGrid_Copy7" Height="26" Canvas.Left="140" Canvas.Top="248" Width="125"/>
-            <ComboBox x:Name="operation4" Canvas.Left="19" Canvas.Top="278" Width="116" Height="26"/>
-            <ComboBox x:Name="procMaterialCase_Copy9" Canvas.Left="270" Canvas.Top="278" Width="116" Height="26"/>
-            <DataGrid x:Name="selectToolResultGrid_Copy8" Height="26" Canvas.Left="140" Canvas.Top="278" Width="125"/>
-            <ComboBox x:Name="operation5" Canvas.Left="19" Canvas.Top="308" Width="116" Height="26"/>
-            <ComboBox x:Name="procMaterialCase_Copy11" Canvas.Left="270" Canvas.Top="308" Width="116" Height="26"/>
-            <DataGrid x:Name="selectToolResultGrid_Copy9" Height="26" Canvas.Left="140" Canvas.Top="308" Width="125"/>
-            <TextBox Height="26" Canvas.Left="393" TextWrapping="Wrap" Text="TextBox" Canvas.Top="187" Width="133"/>
-            <TextBox Height="26" Canvas.Left="393" TextWrapping="Wrap" Text="TextBox" Canvas.Top="248" Width="133"/>
-            <TextBox Height="26" Canvas.Left="393" TextWrapping="Wrap" Text="TextBox" Canvas.Top="218" Width="133"/>
-            <ComboBox x:Name="tool" Canvas.Left="14" Canvas.Top="134" Width="512" Height="25"/>
-            <TextBlock Canvas.Left="163" TextAlignment="Center" TextWrapping="Wrap" Text="Инструмент" Canvas.Top="109" FontSize="14" FontWeight="Bold" Width="213" Height="25"/>
-            <TextBox Height="26" Canvas.Left="528" TextWrapping="Wrap" Text="TextBox" Canvas.Top="74" Width="163"/>
+        <Canvas x:Name="selectToolCanvas" HorizontalAlignment="Left" Height="369" Margin="10,40,0,0" VerticalAlignment="Top" Width="887" Visibility="Visible">
+            <TextBlock Canvas.Left="118" TextAlignment="Center" TextWrapping="Wrap" Text="Наименование заготовки" Canvas.Top="67" FontSize="14" FontWeight="Bold" Width="179" Height="20"/>
+            <TextBlock Canvas.Left="531" TextAlignment="Center" TextWrapping="Wrap" Text="Размер" Canvas.Top="67" FontSize="14" FontWeight="Bold" Width="160" Height="26" RenderTransformOrigin="0.438,0.575"/>
+            <TextBlock Canvas.Left="696" TextAlignment="Center" TextWrapping="Wrap" Text="Вес" Canvas.Top="67" FontSize="14" FontWeight="Bold" Width="125" Height="26"/>
+            <ComboBox x:Name="material" Canvas.Left="14" Canvas.Top="92" Width="512" Height="26"/>
+            <Rectangle Height="360" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Width="887" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <TextBlock Canvas.Left="71" TextWrapping="Wrap" Text="Операция" Canvas.Top="298" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.437,0.054"/>
+            <TextBlock TextWrapping="Wrap" Text="Информация о задании:" FontSize="14" FontWeight="Bold" Canvas.Left="118" Canvas.Top="18"/>
+            <ComboBox x:Name="plan" Canvas.Top="42" Width="860" Height="26" Canvas.Left="14"/>
+            <ComboBox x:Name="operation" Canvas.Left="15" Canvas.Top="322" Width="160" Height="26"/>
+            <TextBlock Canvas.Left="185" TextWrapping="Wrap" Text="Нормочасы" Canvas.Top="298" FontSize="14" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="444" TextWrapping="Wrap" Text="Данные об исполнителе" Canvas.Top="298" FontSize="14" FontWeight="Bold" Width="182"/>
+            <ComboBox x:Name="report" Canvas.Left="266" Canvas.Top="322" Width="608" Height="26"/>
+            <ComboBox x:Name="tool" Canvas.Left="14" Canvas.Top="146" Width="512" Height="26"/>
+            <TextBlock Canvas.Left="118" TextAlignment="Center" TextWrapping="Wrap" Text="Код и наименование инструмента" Canvas.Top="122" FontSize="14" FontWeight="Bold" Width="237" Height="25" RenderTransformOrigin="0.516,0.88"/>
+            <TextBox Height="26" Canvas.Left="528" TextWrapping="Wrap" Text=" " Canvas.Top="92" Width="163"/>
+            <ComboBox x:Name="equipment" Canvas.Left="15" Canvas.Top="267" Width="859" Height="26"/>
+            <TextBlock Canvas.Left="118" TextAlignment="Center" TextWrapping="Wrap" Text="Код и наименование оборудования" Canvas.Top="242" FontSize="14" FontWeight="Bold" Width="251" Height="25"/>
+            <TextBox Height="26" Canvas.Left="185" TextWrapping="Wrap" Text=" " Canvas.Top="322" Width="76"/>
+            <TextBox Height="26" Canvas.Left="696" TextWrapping="Wrap" Text=" " Canvas.Top="91" Width="125" RenderTransformOrigin="1.037,0.577"/>
+            <ComboBox x:Name="tool2" Canvas.Left="14" Canvas.Top="176" Width="512" Height="26"/>
+            <ComboBox x:Name="tool3" Canvas.Left="14" Canvas.Top="206" Width="512" Height="26"/>
         </Canvas>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="852,61,0,0"/>
     </Grid>
 </Window>

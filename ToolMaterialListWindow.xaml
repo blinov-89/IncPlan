@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="Список инструмента и материала" Height="350" Width="919.384">
+        Title="Список инструмента и материала" Height="350" Width="950.583">
     <Grid Margin="0,0,46,9">
         <Canvas Name="toolInsertList" HorizontalAlignment="Left" Height="305" Margin="10,10,-42,-101" VerticalAlignment="Top" Width="1178">
-            <TextBlock Canvas.Left="104" TextAlignment="Center" TextWrapping="Wrap" Text="Доступный инструмент" Canvas.Top="24" FontWeight="Bold" FontSize="14" Width="244"/>
-            <TextBlock Canvas.Left="487" TextAlignment="Center" TextWrapping="Wrap" Text="Доступный материал" Canvas.Top="24" FontWeight="Bold" FontSize="14" Width="411"/>
+            <TextBlock Canvas.Left="101" TextAlignment="Center" TextWrapping="Wrap" Text="Доступный инструмент" Canvas.Top="28" FontWeight="Bold" FontSize="14" Width="244"/>
+            <TextBlock Canvas.Left="487" TextAlignment="Center" TextWrapping="Wrap" Text="Доступный материал" Canvas.Top="28" FontWeight="Bold" FontSize="14" Width="411"/>
             <DataGrid Name="AvToolGrid" Height="245" Canvas.Left="4" Canvas.Top="50" Width="478"/>
-            <DataGrid Name="AvMaterialGrid" Height="245" Canvas.Left="487" Canvas.Top="48" Width="411"/>
-            <Rectangle Height="300" Canvas.Left="4" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="5" Width="894" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <DataGrid Name="AvMaterialGrid" Height="245" Canvas.Left="487" Canvas.Top="48" Width="438"/>
+            <Rectangle Height="300" Canvas.Left="4" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="5" Width="921" Panel.ZIndex="-1" Fill="#FFECECEC"/>
             <!--<ListBox Name="list" Height="145">-->
-                <!--<ListBoxItem Margin="3">AvMaterialGrid</ListBoxItem>
+            <!--<ListBoxItem Margin="3">AvMaterialGrid</ListBoxItem>
                 <ListBoxItem Margin="3">AvToolGrid</ListBoxItem>
                 <ListBox.ContextMenu>
                     <ContextMenu>

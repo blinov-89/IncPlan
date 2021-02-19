@@ -23,7 +23,7 @@
             <ComboBox x:Name="productName" Canvas.Left="10" Canvas.Top="48" Width="314" Height="25"/>
             <TextBlock Canvas.Left="10" TextAlignment="Center" TextWrapping="Wrap" Text="Наименование изделия" Canvas.Top="18" Width="314" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
             <ComboBox x:Name="reportId" Canvas.Left="59" Canvas.Top="111" Width="162" Height="25"/>
-            <TextBlock Canvas.Left="59" TextAlignment="Center" TextWrapping="Wrap" Text="ФИО исполнителя" Canvas.Top="81" Width="185" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
+            <TextBlock Canvas.Left="48" TextAlignment="Center" TextWrapping="Wrap" Text="ФИО исполнителя" Canvas.Top="81" Width="185" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
             <ComboBox x:Name="statusId" Canvas.Left="301" Canvas.Top="111" Width="162" Height="25"/>
             <TextBlock Canvas.Left="301" TextAlignment="Center" TextWrapping="Wrap" Text="Статус заказа" Canvas.Top="81" Width="162" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
             <ComboBox x:Name="documentId" Canvas.Left="519" Canvas.Top="111" Width="162" Height="25"/>

@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="Окно добавления нового сотрудника" Height="450" Width="800">
-    <Grid>
+        Title="Окно добавления нового сотрудника" Height="179.797" Width="781.716">
+    <Grid Margin="0,0,14,274">
         <Grid.RowDefinitions>
             <RowDefinition Height="26*"/>
             <RowDefinition Height="393*"/>
         </Grid.RowDefinitions>
-        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="187" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Visibility="Visible" Grid.RowSpan="2">
+        <Canvas Name="addTaskCanvas" HorizontalAlignment="Left" Height="121" Margin="10,10,0,0" VerticalAlignment="Top" Width="753" Visibility="Visible" Grid.RowSpan="2">
             <TextBox Name="reportNameField" Height="25" Canvas.Left="190" TextWrapping="Wrap" Canvas.Top="48" Width="295"/>
             <TextBlock Canvas.Left="250" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="171" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="ФИО сотрудника"/>
-            <Rectangle Height="131" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="772" Panel.ZIndex="-1" Fill="#FFECECEC"/>
+            <Rectangle Height="112" StrokeEndLineCap="Round" Stroke="#FF514B4B" StrokeLineJoin="Round" Canvas.Top="10" Width="753" Panel.ZIndex="-1" Fill="#FFECECEC"/>
             <Button Content="Добавить данные о сотруднике в справочник" Canvas.Left="190" Canvas.Top="78" Width="295" Height="25" Click="AddNewReportEvent" FontWeight="Bold"/>
             <TextBox x:Name="reportNumberField" Height="25" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="48" Width="175"/>
-            <TextBlock Canvas.Left="31" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="Тебельный номер"/>
+            <TextBlock Canvas.Left="31" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="18" Width="137" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold" Text="Табельный номер"/>
             <ComboBox x:Name="reportDepField" Canvas.Left="490" Canvas.Top="48" Width="122" Height="25"/>
             <TextBlock Canvas.Left="490" TextAlignment="Center" TextWrapping="Wrap" Text="участок" Canvas.Top="18" Width="122" HorizontalAlignment="Left" FontSize="14" Height="25" FontWeight="Bold"/>
             <ComboBox x:Name="reportSpecField" Canvas.Left="620" Canvas.Top="48" Width="122" Height="25"/>
