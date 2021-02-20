@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IncPlan"
         mc:Ignorable="d"
-        Title="CustomersWindow" Height="194.018" Width="351.016">
+        Title="Окно добавления данных о заказчкике" Height="194.018" Width="351.016">
     <Grid Margin="0,0,461,266">
         <Grid.RowDefinitions>
             <RowDefinition Height="26*"/>
